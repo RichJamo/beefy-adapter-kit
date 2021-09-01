@@ -176,15 +176,17 @@ export function shouldStakeLikeBeefyFinanceAdapter(token: string, pool: PoolItem
     // get price per full share of the beefy lpToken
     const pricePerFullShareAfterStake = await beefyDepositInstance.getPricePerFullShare();
     // get amount in underlying token if reward token is swapped
-    const rewardInTokenAfterStake = (
-      await this.uniswapV2Router02.getAmountsOut(expectedUnclaimedRewardAfterStake, [
-        expectedRewardToken,
-        // await this.uniswapV2Router02.WETH(),
-        pool.tokens[0],
-      ])
-    )[2];
+    //COMMENTED OUT UNTIL SUFFICIENT LIQUIDITY IN WATCH FOR QUICKSWAP CALLS NOT TO REVERT
+    // const rewardInTokenAfterStake = (
+    //   await this.uniswapV2Router02.getAmountsOut(expectedUnclaimedRewardAfterStake, [
+    //     expectedRewardToken,
+    //     await this.uniswapV2Router02.WETH(),
+    //     pool.tokens[0],
+    //   ])
+    // )[2];
 
     // // calculate amount in token for staked lpToken
+    //COMMENTED OUT UNTIL SUFFICIENT LIQUIDITY IN WATCH FOR QUICKSWAP CALLS NOT TO REVERT
     // const expectedAmountInTokenFromStakedLPTokenAfterStake = BigNumber.from(expectedStakedLPTokenBalanceAfterStake)
     //   .mul(BigNumber.from(pricePerFullShareAfterStake))
     //   .div(BigNumber.from("10").pow(BigNumber.from(decimals)));
@@ -209,6 +211,7 @@ export function shouldStakeLikeBeefyFinanceAdapter(token: string, pool: PoolItem
     expect(actualRewardTokenBalanceAfterClaim).to.be.eq(expectedRewardTokenBalanceAfterClaim);
 
     // // 4. Swap the reward token into underlying token
+    //COMMENTED OUT UNTIL SUFFICIENT LIQUIDITY IN WATCH FOR QUICKSWAP CALLS NOT TO REVERT
     // await this.testDeFiAdapter.testGetHarvestAllCodes(
     //   pool.pool,
     //   pool.tokens[0],

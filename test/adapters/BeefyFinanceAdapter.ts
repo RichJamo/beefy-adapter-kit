@@ -118,11 +118,11 @@ describe("Unit tests", function () {
     await bifi.transfer(this.testDeFiAdapter.address, hre.ethers.utils.parseUnits("10", 18), getOverrideOptions());
   });
 
-  // describe("BeefyFinanceAdapter", function () {
-  //   Object.keys(BeefyFinancePools).map((token: string) => {
-  //     shouldBehaveLikeBeefyFinanceAdapter(token, (BeefyFinancePools as LiquidityPool)[token]);
-  //   });
-  // });
+  describe("BeefyFinanceAdapter", function () {
+    Object.keys(BeefyFinancePools).map((token: string) => {
+      shouldBehaveLikeBeefyFinanceAdapter(token, (BeefyFinancePools as LiquidityPool)[token]);
+    });
+  });
 
   describe("BeefyFinanceAdapter", function () {
     Object.keys(BeefyStakingPools).map((token: string) => {
