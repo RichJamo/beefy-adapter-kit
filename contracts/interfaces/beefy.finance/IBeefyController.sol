@@ -2,7 +2,7 @@
 
 pragma solidity ^0.6.12;
 
-interface IHarvestController {
+interface IBeefyController {
     function greyList(address _addr) external view returns (bool);
 
     // Only smart contracts will be affected by the whitelist.

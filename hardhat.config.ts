@@ -52,7 +52,7 @@ const config: HardhatUserConfig = {
       },
       forking: {
         url: archiveMainnetNodeURL,
-        blockNumber: 13089137,
+        blockNumber: 18637330,
       },
       chainId: chainIds.hardhat,
       hardfork: "london",
@@ -83,6 +83,9 @@ const config: HardhatUserConfig = {
   typechain: {
     outDir: "typechain",
     target: "ethers-v5",
+  },
+  mocha: {
+    timeout: 90000,
   },
 };
 
