@@ -34,6 +34,11 @@ if (!archiveMainnetNodeURL) {
   throw new Error("Please set your ARCHIVE_MAINNET_NODE_URL in a .env file");
 }
 
+const myPrivateKey: string | undefined = process.env.MY_PRIVATE_KEY;
+if (!myPrivateKey) {
+  throw new Error("Please set your MY_PRIVATE_KEY in a .env file");
+}
+
 ////////////////////////////////////////////////////////////
 /// HARDHAT NETWORK CONFIGURATION FOR THE FORKED MAINNET ///
 ////////////////////////////////////////////////////////////
@@ -56,6 +61,10 @@ const config: HardhatUserConfig = {
       },
       chainId: chainIds.hardhat,
       hardfork: "london",
+    },
+    polygon: {
+      url: archiveMainnetNodeURL,
+      accounts: [`0x${myPrivateKey}`], //do I really need to put my private key in here?
     },
   },
   paths: {
